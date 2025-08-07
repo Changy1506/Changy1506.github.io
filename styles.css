@@ -73,9 +73,9 @@ ul, ol {
 }
 
 table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1rem 0;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0px 20px;
 }
 
 th, td {
