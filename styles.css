@@ -189,22 +189,37 @@ section > h2 {
   height: auto;
 }
 
+/* Improve mobile layout */
 @media (max-width: 768px) {
-  tr, td { 
-    display: block;
-    width: 100%;
-    text-align: left;     /* <- add this */
+  /* Make the content actually use the screen */
+  body {
+    margin: 0;              /* remove big outer margins */
+    padding: 0.5rem;        /* small, comfy gutter */
+    max-width: none;        /* no fixed column cap */
+    font-size: 14px;
   }
 
-  /* Also make headings not look “shrunk to content” on mobile */
+  /* If you keep the "stacked table" approach, force left and full width */
+  table, tr, td {
+    display: block;
+    width: 100%;
+  }
+  tr, td {
+    text-align: left;       /* prevent weird centering */
+    box-sizing: border-box; /* consistent padding widths */
+  }
+
+  /* Headings shouldn’t be shrink-wrapped on mobile */
   section > h2 {
-    width: 100%;          /* override fit-content */
+    width: 100%;
     max-width: none;
   }
 
-  /* Belt-and-suspenders: make the common text blocks left-aligned */
-  .paper, .paper-title, p, h1, h2, h3 {
-    text-align: left;
+  /* Profile image shouldn’t force a wide column */
+  .profile-pic {
+    width: min(350px, 100%);
   }
 }
+
+table { table-layout: fixed; width: 100%; }
 
