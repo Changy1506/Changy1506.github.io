@@ -189,37 +189,40 @@ section > h2 {
   height: auto;
 }
 
-/* Improve mobile layout */
-@media (max-width: 768px) {
-  /* Make the content actually use the screen */
+/* Make portrait view actually use the screen */
+@media (max-width: 768px) and (orientation: portrait) {
   body {
-    margin: 0;              /* remove big outer margins */
-    padding: 0.5rem;        /* small, comfy gutter */
-    max-width: none;        /* no fixed column cap */
-    font-size: 14px;
+    margin: 0;                 /* kill outer gaps */
+    padding: 0 12px;           /* small gutter only */
+    max-width: none;           /* remove 750px cap */
   }
 
-  /* If you keep the "stacked table" approach, force left and full width */
+  /* If you're stacking the table, make sure it fills & left-aligns */
   table, tr, td {
     display: block;
     width: 100%;
   }
   tr, td {
-    text-align: left;       /* prevent weird centering */
-    box-sizing: border-box; /* consistent padding widths */
+    text-align: left;
+    box-sizing: border-box;
   }
 
-  /* Headings shouldn’t be shrink-wrapped on mobile */
+  /* Prevent headings from being shrink-wrapped */
   section > h2 {
     width: 100%;
     max-width: none;
   }
 
-  /* Profile image shouldn’t force a wide column */
+  /* Don’t let the portrait image force a wide column */
   .profile-pic {
-    width: min(350px, 100%);
+    width: 100%;
+    max-width: 320px;  /* tweak as you like */
+    height: auto;
   }
 }
 
+/* Helpful universally */
 table { table-layout: fixed; width: 100%; }
+
+
 
